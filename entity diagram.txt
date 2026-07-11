@@ -1,0 +1,32 @@
++-------------------+              +-----------------------+
+  |       USERS       |              |   APPLICANT_DETAILS   |
+  +-------------------+              +-----------------------+
+  | PK | UserID       |1 -------- 0* | PK | ApplicantID      |
+  |    | Username     |              | FK | UserID            |
+  |    | Email        |              |    | Income           |
+  +-------------------+              |    | Age              |
+                                     +-----------------------+
+                                                 |
+                                                 | 1
+                                                 |
+                                                 | 1
+                                     +-----------------------+
+                                     |    CREDIT_HISTORY     |
+                                     +-----------------------+
+                                     | PK | HistoryID        |
+                                     | FK | ApplicantID      |
+                                     |    | Credit_Score     |
+                                     |    | Prior_Default    |
+                                     +-----------------------+
+                                                 |
+                                                 | 1
+                                                 |
+                                                 | 0*
+  +-------------------+              +-----------------------+
+  |     ML_MODEL      |              |  APPROVAL_PREDICTION  |
+  +-------------------+              +-----------------------+
+  | PK | ModelID      |1 -------- 0* | PK | PredictionID     |
+  |    | Model_Name   |              | FK | ApplicantID      |
+  |    | Version      |              | FK | ModelID          |
+  |    +--------------+              |    | Approval_Status  |
+                                     +-----------------------+
